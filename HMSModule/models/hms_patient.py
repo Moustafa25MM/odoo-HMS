@@ -16,4 +16,4 @@ class HMSPatient(models.Model):
     Age = fields.Integer()
     
 
-   
+    department_id = fields.Many2one('hms.department')
