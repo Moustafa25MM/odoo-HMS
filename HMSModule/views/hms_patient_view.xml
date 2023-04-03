@@ -15,10 +15,37 @@
                     <field name="Address"/>
                     <field name="Image"/>
                 </tree>
+            </field>           
+        </record>
 
+        <record id="patient_form_view" model="ir.ui.view">
+            <field name="name">Patient tree view</field>
+            <field name="model">hms.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group string="General Info">
+                                <field name="First_name" required="True"/>
+                                <field name="Last_name" required="True"/>
+                                <field name="Birth_date"/>
+                                <field name="Age"/>
+                                <field name="Blood_type"/>
+                                <field name="CR_Ratio" attrs="{'required':[('PCR','=',True)]}"/>
+                                <field name="PCR"/>
+                                <field name="Address"/>
+                                <field name="Image"/>
+                                <field name="department_id" domain="[('isOpened','=',True)]"/>
+                                <field name="doctor_id" widget="many2many_tags" attrs="{'readonly': [('department_id', '=', False)]}"/>
+                                
+                            </group>
+                            <group string= 'Patient History' attrs="{'invisible':[('Age','&lt;',50)]}">
+                                <field name="History" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
             </field>
-
-           
         </record>
       
         <record id="patient_action" model="ir.actions.act_window"> 
