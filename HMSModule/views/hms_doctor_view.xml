@@ -1,6 +1,15 @@
 <odoo>
     <data>
-    
+        <record>
+            <field name = "name">Doctors tree view</field>
+            <field name="model">hms.doctors</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="first_name"/>
+                    <field name="last_name"/>
+                </tree>
+            </field>
+        </record>
         <record id="doctor_action" model="ir.actions.act_window" >
         <field name="name">Doctor</field>
         <field name="res_model">hms.doctor</field>
