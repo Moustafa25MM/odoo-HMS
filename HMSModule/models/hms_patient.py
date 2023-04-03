@@ -1,6 +1,6 @@
 from odoo import models , fields , api
 from datetime import date
-
+from odoo.exceptions import ValidationError
 
 class HMSPatient(models.Model):
 
@@ -63,3 +63,15 @@ class HMSPatient(models.Model):
     
     def set_Serious(self):
         self.State ='serious'
+
+
+    
+    @api.onchange('Age')
+    def onChange_Age(self):
+        if self.Age > 30 :
+            self.PCR = True
+            return {
+                'warning': {
+                    'message': 'PCR has been changed'   
+                }
+            }
