@@ -17,4 +17,14 @@ class HMSPatient(models.Model):
     
 
     department_id = fields.Many2one('hms.department')
+    department_capacity = fields.Integer(related="department_id.department_capacity")
     doctor_id = fields.Many2many('hms.doctor')
+
+    State = fields.Selection([
+        ('undetermined','Undetermined'),
+        ('good','Good'),
+        ('fair','Fair'),
+        ('serious','Serious')
+    ])
+
+    
