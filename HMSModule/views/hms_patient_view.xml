@@ -54,7 +54,7 @@
         </record>
 
        <menuitem id="hms_menu" name="hms"></menuitem>
-       <menuitem id="hms_patient" name="Patient" sequence="1" parent="hms_menu" action="patient_action"></menuitem>
+       <menuitem id="hms_patient" name="Patient" sequence="3" parent="hms_menu" action="patient_action"></menuitem>
 
 
 
