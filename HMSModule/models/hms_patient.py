@@ -24,7 +24,7 @@ class HMSPatient(models.Model):
     PCR = fields.Boolean()
     Image = fields.Image()
     Address = fields.Text()
-    Age = fields.Integer()
+    Age = fields.Integer(compute="compute_age")
     email = fields.Char()
     
 
@@ -41,12 +41,12 @@ class HMSPatient(models.Model):
 
     patient_logs = fields.One2many('hms.patient.log','log_id')
 
-    @api.onchange('state')
+    @api.onchange('State')
     def state_change(self):
         values = {
             #'created_by': self.doctor_id,
             'date': date.today(),
-            'description' : f'State Changed to {self.state}',
+            'description' : f'State Changed to {self.State}',
             #'log_id' : self._ids
         }
         log = self.env['hms.patient.log'].create(values)
@@ -79,5 +79,17 @@ class HMSPatient(models.Model):
 
     
     _sql_constraints = [
-        ('unique_email', 'unique(email)', 'Email already exists!')
+        ('unique_email', 'unique (email)', 'Email address already exists!')
     ]
+
+
+    @api.depends('Birth_date')
+    def compute_age(self):
+        for rec in self :
+            if rec.Birth_date:
+                today = date.today()
+                rec.Age = today.year - rec.Birth_date.year - (
+                    (today.month, today.day) < (rec.Birth_date.month, rec.Birth_date.day)
+                )
+            else :
+                rec.Age = 0 

@@ -6,7 +6,7 @@ class HMSPatientLog(models.Model):
     _rec_name = 'description'
 
 
-    created_by = fields.Many2one('users')
+    created_by = fields.Many2one('hms.patient')
     date = fields.Date()
     description = fields.Char()
     log_id = fields.Many2one('hms.patient')

@@ -26,11 +26,12 @@
                 <form>
                     <sheet>
                         <header>
-                            <button type="object" name="set_Undetermined" string="Undetermined" />
+                            <!-- <button type="object" name="set_Undetermined" string="Undetermined" />
                             <button type="object" name="set_Good" string="Good" />
                             <button type="object" name="set_Fair" string="Fair"  />
-                            <button type="object" name="set_Serious" string="Serious" />
-                            <field name="State" widget="statusbar" />
+                            <button type="object" name="set_Serious" string="Serious" /> -->
+                            <field name="State" widget="statusbar" nolabel="1" 
+                             options="{ 'clickable' : '1'}"/>
                         </header>
                         <group>
                             <group string="General Info">
