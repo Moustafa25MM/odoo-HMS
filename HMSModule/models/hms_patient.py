@@ -17,3 +17,4 @@ class HMSPatient(models.Model):
     
 
     department_id = fields.Many2one('hms.department')
+    doctor_id = fields.Many2many('hms.doctor')
