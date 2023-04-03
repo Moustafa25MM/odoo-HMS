@@ -25,6 +25,7 @@ class HMSPatient(models.Model):
     Image = fields.Image()
     Address = fields.Text()
     Age = fields.Integer()
+    email = fields.Char()
     
 
     department_id = fields.Many2one('hms.department')
@@ -75,3 +76,8 @@ class HMSPatient(models.Model):
                     'message': 'PCR has been changed'   
                 }
             }
+
+    
+    _sql_constraints = [
+        ('unique_email', 'unique(email)', 'Email already exists!')
+    ]

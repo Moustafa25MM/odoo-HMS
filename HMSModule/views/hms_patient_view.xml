@@ -7,6 +7,7 @@
                 <tree>
                     <field name="First_name" />
                     <field name="Last_name" />
+                    <field name = "email"/>
                     <field name="Birth_date"/>
                     <field name="Age"/>
                     <field name="Blood_type"/>
@@ -35,6 +36,7 @@
                             <group string="General Info">
                                 <field name="First_name" required="True"/>
                                 <field name="Last_name" required="True"/>
+                                <field name="email"/>
                                 <field name="Birth_date"/>
                                 <field name="Age"/>
                                 <field name="Blood_type"/>
