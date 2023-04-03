@@ -24,6 +24,13 @@
             <field name="arch" type="xml">
                 <form>
                     <sheet>
+                        <header>
+                            <button type="object" name="set_Undetermined" string="Undetermined" />
+                            <button type="object" name="set_Good" string="Good" />
+                            <button type="object" name="set_Fair" string="Fair"  />
+                            <button type="object" name="set_Serious" string="Serious" />
+                            <field name="State" widget="statusbar" />
+                        </header>
                         <group>
                             <group string="General Info">
                                 <field name="First_name" required="True"/>
@@ -42,6 +49,12 @@
                             <group string= 'Patient History' attrs="{'invisible':[('Age','&lt;',50)]}">
                                 <field name="History" />
                             </group>
+
+                            <notebook>
+                                <page string ="Log History">
+                                    <field name= "patient_logs"></field>
+                                </page>
+                            </notebook>
                         </group>
                     </sheet>
                 </form>

@@ -43,23 +43,23 @@ class HMSPatient(models.Model):
     @api.onchange('state')
     def state_change(self):
         values = {
-            'created_by': self.uid,
+            #'created_by': self.doctor_id,
             'date': date.today(),
             'description' : f'State Changed to {self.state}',
-            'log_id' : self.id
+            #'log_id' : self._ids
         }
         log = self.env['hms.patient.log'].create(values)
         self.patient_logs += log
 
      
     def set_Undetermined(self):
-        self.state = 'undetermined'
+        self.State = 'undetermined'
     
     def set_Good(self):
-        self.state = 'good'
+        self.State = 'good'
 
     def set_Fair(self):
-        self.state = 'fair'
+        self.State = 'fair'
     
     def set_Serious(self):
-        self.state ='serious'
+        self.State ='serious'

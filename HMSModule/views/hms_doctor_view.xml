@@ -1,8 +1,8 @@
 <odoo>
     <data>
-        <record>
-            <field name = "name">Doctors tree view</field>
-            <field name="model">hms.doctors</field>
+        <record id="doctor_tree_view" model="ir.ui.view">
+            <field name = "name">doctor tree view</field>
+            <field name="model">hms.doctor</field>
             <field name="arch" type="xml">
                 <tree>
                     <field name="first_name"/>
