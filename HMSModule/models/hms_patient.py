@@ -8,7 +8,7 @@ class HMSPatient(models.Model):
 
     First_name = fields.Char()
     Last_name = fields.Char()
-    Birth_date = fields.Date()
+    Birth_date = fields.Date(string ="Date_of_birth")
     History = fields.Html()
     CR_Ratio = fields.Float()
     Blood_type = fields.Selection ([
@@ -24,8 +24,8 @@ class HMSPatient(models.Model):
     PCR = fields.Boolean()
     Image = fields.Image()
     Address = fields.Text()
-    Age = fields.Integer(compute="compute_age")
-    email = fields.Char()
+    Age = fields.Integer(string= "myAge" , compute="compute_age")
+    email = fields.Char(string="Email")
     
 
     department_id = fields.Many2one('hms.department')
@@ -79,7 +79,7 @@ class HMSPatient(models.Model):
 
     
     _sql_constraints = [
-        ('unique_email', 'unique (email)', 'Email address already exists!')
+        ('Duplicate_Email', 'unique (Email)', 'Email address already exists!')
     ]
 
 
